@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content"></div>
+    <input id="input" type="text">
+</body>
+<script>
+    const content = document.getElementById("content");
+    const input = document.getElementById("input");
+    //  Vue 2.x v-model
+    // let obj = { name: "tadm" };
+    // content.innerHTML = obj.name;
+    // let newObj = JSON.parse(JSON.stringify(obj))
+    // Object.defineProperty(obj, "name", {
+    //     get() {
+    //         return newObj.name;
+    //     },
+    //     set(value) {
+    //         if (newObj.name === value) {
+    //             return;
+    //         }
+    //         newObj.name = value;
+    //         observer();
+    //     }
+    // });
+
+    //  Vue 3.0 --- 效率更高，不再继续需要通过循环劫持所有属性，一步到位
+    let obj = {};
+    obj = new Proxy(obj, {
+        get(target, key) {
+            return target[key];
+        },
+        set(target, prop, value) {
+            target[prop] = value;
+            observer();
+        }
+    })
+    setTimeout(() => {
+        obj.name = "hello tadm";
+    }, 1000);
+    function observer() {
+        content.innerHTML = obj.name;
+        input.value = obj.name;
+    }
+    input.oninput = (e) => {
+        obj.name = e.target.value
+    }
+</script>
+
+</html>

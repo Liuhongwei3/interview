@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .left,
+    .right {
+        background-color: pink;
+        width: 200px;
+        min-height: 400px;
+    }
+
+    /* .container {
+        padding: 0 200px;
+    }
+
+    .left,
+    .right,
+    .center {
+        float: left;
+        height: 300px;
+    }
+
+    .center {
+        background-color: powderblue;
+        width: 100%;
+    }
+
+    .left {
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+    }
+
+    .right {
+        margin-right: -200px;
+    } */
+
+    .container,
+    .left,
+    .right {
+        float: left;
+    }
+
+    .container,
+    .center {
+        background-color: powderblue;
+        min-height: 400px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .center {
+        margin: 0 200px;
+    }
+
+    .left {
+        margin-left: -100%;
+    }
+
+    .right {
+        margin-left: -200px;
+    }
+</style>
+
+<body>
+    <!-- <div class="container">
+        <div class="center"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div> -->
+    <div>
+        <div class="container">
+            <div class="center"></div>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <script src="./JS/作用域.js"></script>
+</body>
+
+</html>

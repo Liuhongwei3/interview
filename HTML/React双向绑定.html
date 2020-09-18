@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class A extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { name: "tadm" };
+            this.change = this.change.bind(this)
+        }
+        render() {
+            return <div>
+                <div>{this.state.name}</div>
+                {/* 注意事件名为驼峰 onChange/onClick/... */}
+                <input id="input" type="text" value={this.state.name} onChange={event => this.change(event)}/>
+            </div>;
+        }
+        change(e){
+            this.setState({
+                name: e.target.value
+            })
+        }
+        componentDidMount(){
+
+        }
+    }
+    ReactDOM.render(
+        <A />,
+        document.getElementById('root')
+    );
+</script>
+
+</html>
